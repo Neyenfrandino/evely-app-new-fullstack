@@ -4,4 +4,4 @@ python-dotenv
 pydantic
 psycopg2
 SQLALchemy  
-python-dotenv
+Alembic

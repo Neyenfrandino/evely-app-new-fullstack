@@ -1,9 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+from core.config import settings
 
+SQLALCHEMY_DATABASE_URL = settings.DATA_BASE_URL
 # SQLALCHEMY_DATABASE_URL = "postgresql://postgres:Neyen1995@localhost:5432/evely-new-database"
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:Neyen1995@localhost:5432/evely-new-database"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 Sessionmaker = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -19,6 +20,6 @@ def get_db():
 
 try:
     with engine.connect() as connection:
-        print("Conexión exitosa a la base de datos")
+        print(f"Conexión exitosa a la base de datos {engine.url}")	
 except Exception as e:
     print(f"Error al conectar a la base de datos: {e}")
