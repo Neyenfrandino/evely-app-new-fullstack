@@ -24,10 +24,20 @@ class Schema_user_login(BaseModel):
         from_attributes = True # Permite usar from_orm para crear instancias desde atributos de objetos ORM
 
 
-class token(BaseModel):
+class Schema_pills(BaseModel):
+    name_pills: str
+    description_pills: str
+    mode_use_pills: str
+    cant_pills_in_tablet: int
+
+    class Config:
+        # orm_mode = True  # Permite crear instancias desde objetos ORM (como los de SQLAlchemy)
+        from_attributes = True # Permite usar from_orm para crear instancias desde atributos de objetos ORM
+        
+
+class Token(BaseModel):
     access_token: str
     token_type: str
 
-class token_data(BaseModel):
+class Token_data(BaseModel):
     username: Union[str, None] = None
-    email: Union[str, None] = None

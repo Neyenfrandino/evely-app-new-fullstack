@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import uvicorn
 from app.routers.user import user
+from app.routers.pills_all import pills_all_router
 from app.routers import auth
 # from app.db.database import Base, engine 
 
@@ -11,8 +12,9 @@ app = FastAPI()
 
 # create_tables()
 
-app.include_router(user.router)
 app.include_router(auth.router)
+app.include_router(user.router)
+app.include_router(pills_all_router.router)
 
 
 if __name__ == "__main__":
